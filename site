@@ -1,0 +1,13 @@
+<script>start("/Users/joshmarino/Disability/site/");</script>
+<script>onHasParentDirectory();</script>
+<script>addRow("img","img",1,2816,"2.8 kB",1746894285,"5/10/25, 12:24:45 PM");</script>
+<script>addRow("about.html","about.html",0,0,"0 B",1746840435,"5/9/25, 9:27:15 PM");</script>
+<script>addRow("dictionary.html","dictionary.html",0,0,"0 B",1746840510,"5/9/25, 9:28:30 PM");</script>
+<script>addRow("education.html","education.html",0,19864,"19.4 kB",1746657949,"5/7/25, 6:45:49 PM");</script>
+<script>addRow("equipment.html","equipment.html",0,25227,"24.6 kB",1746894153,"5/10/25, 12:22:33 PM");</script>
+<script>addRow("governmentAid.html","governmentAid.html",0,8401,"8.2 kB",1746845863,"5/9/25, 10:57:43 PM");</script>
+<script>addRow("grants.html","grants.html",0,12036,"11.8 kB",1746845871,"5/9/25, 10:57:51 PM");</script>
+<script>addRow("index.html","index.html",0,1819,"1.8 kB",1746845776,"5/9/25, 10:56:16 PM");</script>
+<script>addRow("scholarships.html","scholarships.html",0,6642,"6.5 kB",1746845920,"5/9/25, 10:58:40 PM");</script>
+<script>addRow("styles.css","styles.css",0,4345,"4.2 kB",1746846188,"5/9/25, 11:03:08 PM");</script>
+<script>addRow("tutorials.html","tutorials.html",0,0,"0 B",1746840522,"5/9/25, 9:28:42 PM");</script>
