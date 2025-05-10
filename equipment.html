@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Everyday Quad – Adaptive Equipment</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .grid-cards img {
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- fixed header -->
+  <header class="site-header">
+    <div class="nav-container">
+      <h1><a href="index.html">Everyday Quad</a></h1>
+      <ul class="site-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="equipment.html">Adaptive Equipment</a></li>
+        <li class="has-dropdown">
+          <a>Resources ▾</a>
+          <ul class="dropdown">
+            <li><a href="grants.html">Grants</a></li>
+            <li><a href="scholarships.html">Scholarships</a></li>
+            <li><a href="governmentAid.html">Government Aid</a></li>
+          </ul>
+        </li>
+        
+        <li class="has-dropdown">
+          <a>Education ▾</a>
+          <ul class="dropdown">
+            <li><a href="about.html">About SCIs</a></li>
+            <li><a href="dictionary.html">SCI Dictionary</a></li>
+            <li><a href="tutorials.html">Tutorials</a></li>
+          </ul>
+        </li>        
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <h1>Adaptive Equipment</h1>
+
+    <!-- search + category filters -->
+    <div class="filters">
+      <input id="search" type="search" placeholder="🔍 Search equipment…" />
+    
+      <div class="has-dropdown filter-dropdown">
+        <button type="button" class="filter-toggle">Filter Categories ▾</button>
+        <ul class="dropdown cats">
+          <li><label><input type="checkbox" value="Cognitive Support" checked> Cognitive Support</label></li>
+          <li><label><input type="checkbox" value="Fitness" checked> Fitness</label></li>
+          <li><label><input type="checkbox" value="Health" checked> Health</label></li>
+          <li><label><input type="checkbox" value="Home & Environment" checked> Home & Environment</label></li>
+          <li><label><input type="checkbox" value="Kitchen & Eating" checked> Kitchen & Eating</label></li>
+          <li><label><input type="checkbox" value="Leisure" checked> Leisure</label></li>
+          <li><label><input type="checkbox" value="Personal Care & Clothing" checked> Personal Care & Clothing</label></li>
+          <li><label><input type="checkbox" value="School & Office" checked> School & Office</label></li>
+          <li><label><input type="checkbox" value="Tech" checked> Tech</label></li>
+          <li><label><input type="checkbox" value="Toileting" checked> Toileting</label></li>
+          <li><label><input type="checkbox" value="Transportation" checked> Transportation</label></li>
+          <li><label><input type="checkbox" value="Wheelchair Accessories" checked> Wheelchair Accessories</label></li>
+        </ul>
+      </div>
+    </div>
+    
+    
+    
+    
+
+    <!-- responsive grid of cards -->
+    <div class="grid-cards" id="cards"></div>
+  </main>
+
+  <script>
+    const items = [
+      // —— FITNESS ——
+      { name:"Wheelchair Treadmill", cat:["Fitness"], img:"img/treadmill.jpg", desc:"The ultimate wheelchair fitness machine. Proven to burn calories, condition shoulders, and fine-tune your pushing technique." },
+      { name:"FreeWheel", cat:["Fitness","Leisure"], img:"img/freewheel.jpg", desc:"Attaches to your footrest and transforms your chair into an all-terrain vehicle. Tackle grass, gravel, uneven surfaces and snow with confidence." },
+      { name:"Crossover Symmetry Shoulder Package", cat:["Fitness","Personal Care & Clothing"], img:"img/shoulder.jpg", desc:"Improves shoulder performance while reducing pain. Ideal for transfers, propulsion, and bed mobility." },
+      { name:"MyoCycle", cat:["Fitness"], img:"img/myocycle.jpg", desc:"FES cycling delivers life-changing benefits for spinal cord injury, stroke, cerebral palsy, and more." },
+      { name:"EasyStand", cat:["Fitness"], img:"img/easystand.jpg", desc:"A durable standing frame that supports the body upright—boosting circulation, bone health, and social interaction." },
+      { name:"Rickshaw Exerciser", cat:["Fitness"], img:"img/rickshaw.jpg", desc:"Strengthens arm and shoulder muscles for easier propulsion, transfers, and pressure relief lifts." },
+      { name:"Hand Pedals", cat:["Fitness"], img:"img/handpedals.jpg", desc:"Premium pedal exerciser for upper and lower body—build strength, coordination, and blood circulation." },
+      { name:"SkiErg", cat:["Fitness"], img:"img/skierg.jpg", desc:"Nordic-style workout machine develops strength and endurance in arms and core with double-pole or classic technique." },
+      { name:"Cuff & Ankle Wrist Weights", cat:["Fitness"], img:"img/cuffweights.jpg", desc:"Color-coded, secure weights that strap to your limbs for added resistance in daily activities." },
+      {
+  name: "LEVO C3 Standing Wheelchair",
+  cat: ["Fitness & Mobility"],
+  img: "img/levo-c3.jpg",
+  desc: "Electrically powered standing wheelchair that boosts bone density, circulation, and offers upright social interaction with the press of a button."
+},
+{
+  name: "EasyStand StrapStand",
+  cat: ["Fitness & Mobility"],
+  img: "img/easystand-strapstand.jpg",
+  desc: "Standing frame that helps those with limited or no trunk control to bear weight safely while building endurance."
+},
+{
+  name: "Handcycle Attachment",
+  cat: ["Fitness & Mobility"],
+  img: "img/handcycle-attachment.jpg",
+  desc: "Clip-on handcycle attachment for wheelchairs—great for cardiovascular health and independent outdoor recreation."
+},
+
+
+      // —— SCHOOL & OFFICE ——
+      { name:"Standing Desk", cat:["School & Office"], img:"img/standing-desk.jpg", desc:"Height-adjustable desk that fits your wheelchair—essential for comfortable studying or working." },
+      { name:"Foam Tubing", cat:["School & Office"], img:"img/foam-tubing.jpg", desc:"Closed-cell foam grips slide over pens, utensils, toothbrushes, and more to make them easier to hold." },
+      { name:"Dycem", cat:["School & Office"], img:"img/dycem.jpg", desc:"Non-slip mat provides increased friction and stability—cut to size for trays, desks, or lap boards." },
+      { name:"Writing-Bird Pen", cat:["School & Office"], img:"img/writing-bird-pen.jpg", desc:"Adjustable writing device for limited dexterity—slides easily on paper with minimal downward pressure." },
+      { name:"T-Pull Door Closer", cat:["School & Office"], img:"img/t-pull-door-closer.jpg", desc:"Handle you attach anywhere on a door to pull it closed behind you—no more wrestling with knobs." },
+      { name:"LapStacker", cat:["School & Office"], img:"img/lapstacker.jpg", desc:"Retractable carry system for wheelchairs—keeps belongings secure and reduces frustration." },
+      { name:"Roll-Proof Writing Grips", cat:["School & Office"], img:"img/roll-proof-grips.jpg", desc:"Soft, bulb-shaped grips that fit pens and pencils—prevent rolling and improve control." },
+      { name:"Table Top Scissors", cat:["School & Office"], img:"img/table-top-scissors.jpg", desc:"Push-down scissors with a spring return—easy cutting action without a pinch grip." },
+      { name:"QuadTools", cat:["School & Office"], img:"img/quadtools.jpg", desc:"Multi-use reachers and grabbers for picking up objects—great for anyone with limited wrist action." },
+      { name:"Keywings", cat:["School & Office"], img:"img/keywings.jpg", desc:"Key turners that clip onto standard keys—adds ‘wings’ for extra leverage when turning locks." },
+      {
+  name: "Jouse3 Sip-and-Puff Mouse",
+  cat: ["School & Office"],
+  img: "img/jouse3.jpg",
+  desc: "Hands-free mouth-operated mouse and joystick—use breath and head movement to control computers, tablets, and phones."
+},
+{
+  name: "Maltron Adaptive Keyboard",
+  cat: ["School & Office"],
+  img: "img/maltron-keyboard.jpg",
+  desc: "Ergonomic keyboard with uniquely spaced keys for users with limited hand or finger mobility."
+},
+{
+  name: "Voice-Controlled Note Apps",
+  cat: ["School & Office"],
+  img: "img/voice-note-app.jpg",
+  desc: "Use voice dictation tools like Otter.ai or Google Docs voice typing to take notes, write essays, or control your computer without typing."
+},
+
+
+      // —— PERSONAL CARE & CLOTHING ——
+      { name:"Zip Grips", cat:["Personal Care & Clothing"], img:"img/zip-grips.jpg", desc:"Plastic rings that attach to any zip. Just put your finger in the ring to easily pull open and close zips." },
+      { name:"1-Up One Handed Hair Tie", cat:["Personal Care & Clothing"], img:"img/one-handed-hair-tie.jpg", desc:"A long elastic with toggle—create ponytails, buns or headbands with one hand or reduced hand function." },
+      { name:"Socks with Loops", cat:["Personal Care & Clothing"], img:"img/socks-with-loops.jpg", desc:"Socks sewn with ribbon loops at the top—pull on independently even with limited finger function." },
+      { name:"Magnetic Shoe Laces", cat:["Personal Care & Clothing"], img:"img/magnetic-shoe-laces.jpg", desc:"Zubits magnets lace onto your shoes—snap together hands-free and step out easily." },
+      { name:"Magna Ready Dress Shirt", cat:["Personal Care & Clothing"], img:"img/magna-ready-dress-shirt.jpg", desc:"Stafford adaptive dress shirt with Magna Ready® magnetic buttons for easy on/off and sensory-friendly poplin." },
+      { name:"Raindek®", cat:["Personal Care & Clothing"], img:"img/raindek.jpg", desc:"Extreme Temperature eXperience mat—keeps you warm and dry in all conditions." },
+      { name:"Ferticare 2.0", cat:["Personal Care & Clothing"], img:"img/ferticare-2.jpg", desc:"Medical vibrator to help men with SCI achieve ejaculation; also assists with ejaculatory dysfunctions." },
+      { name:"Weekly Pill Containers", cat:["Personal Care & Clothing"], img:"img/weekly-pill-containers.jpg", desc:"Silicone‐capped pill organizers—push or bite to open, press to close, perfect for limited dexterity." },
+      { name:"IntimateRider Sex Chair", cat:["Personal Care & Clothing"], img:"img/intimaterider-sex-chair.jpg", desc:"Patented wheelchair‐compatible sex chair—minimal effort, broad range of motion, and discreet storage." },
+    
+        // —— KITCHEN & EATING ——
+      {
+      name: "Dining with Dignity Utensils",
+      cat: ["Kitchen & Eating"],
+      img: "img/dining-with-dignity-utensils.jpg",
+      desc: "Elegantly designed cutlery with loops—adjust each loop to your finger/thumb for a firm hold and dignified dining."
+      },
+    {
+      name: "Cuff Utensils",
+      cat: ["Kitchen & Eating"],
+      img: "img/cuff-utensils.jpg",
+      desc: "Angled utensils for limited reach or tremors. Seamlessly don/remove the cuff handle for an easier, independent eating experience."
+    },
+    {
+      name: "Plate Guard",
+      cat: ["Kitchen & Eating"],
+      img: "img/plate-guard.jpg",
+      desc: "Unique spill guard that clips onto standard round plates—promotes independence and minimizes messy spills at mealtime."
+    },
+    {
+      name: "Egg-Cracker",
+      cat: ["Kitchen & Eating"],
+      img: "img/egg-cracker.jpg",
+      desc: "Effortlessly cracks eggs for you—no more smashed shells or broken yolks, perfect for baking or breakfast."
+    },
+    {
+      name: "Push Whisk",
+      cat: ["Kitchen & Eating"],
+      img: "img/push-whisk.jpg",
+      desc: "Simply push down on the top to whisk—no grip required for easy mixing."
+    },
+    {
+      name: "Icing Pen",
+      cat: ["Kitchen & Eating"],
+      img: "img/icing-pen.jpg",
+      desc: "One-handed cake decorating: holds the bag in place and uses a lever to squeeze out icing in fine lines, dots, stars, and more."
+    },
+    {
+      name: "Easy-Clip Apron",
+      cat: ["Kitchen & Eating"],
+      img: "img/easy-clip-apron.jpg",
+      desc: "Active Hands apron with a magnetic clasp—no more awkward bows, just clip and go."
+    },
+    {
+      name: "One-Touch Can Opener",
+      cat: ["Kitchen & Eating"],
+      img: "img/one-touch-can-opener.jpg",
+      desc: "Places on top of any can—press a button and the opener cuts and lifts the lid with its built-in magnet."
+    },
+    {
+      name: "Grip Drink/Mug Holder",
+      cat: ["Kitchen & Eating"],
+      img: "img/grip-drink-holder.jpg",
+      desc: "Stabilizes cups, glasses, even yogurt containers on a lapboard—reduces tipping and spilling."
+    },
+    {
+      name: "Cutting Board with Aluminium Spikes",
+      cat: ["Kitchen & Eating"],
+      img: "img/cutting-board-spikes.jpg",
+      desc: "High-grade board with aluminum food spikes holds items firmly for one-handed slicing or dicing."
+    },
+    {
+      name: "Rocker Knife",
+      cat: ["Kitchen & Eating"],
+      img: "img/rocker-knife.jpg",
+      desc: "T-shaped rocker knife for those with low grip strength—goes back and forth to slice easily; dishwasher-safe."
+    },
+    {
+  name: "Liftware Steady Spoon",
+  cat: ["Kitchen & Eating"],
+  img: "img/liftware-spoon.jpg",
+  desc: "Self-stabilizing spoon that counteracts tremors and keeps food from spilling—ideal for those with shaky or limited motor control."
+},
+{
+  name: "Universal Cuff",
+  cat: ["Kitchen & Eating"],
+  img: "img/universal-cuff.jpg",
+  desc: "Fabric strap that holds utensils or toothbrushes for people with no grip or limited hand function."
+},
+{
+  name: "Electric Jar Opener",
+  cat: ["Kitchen & Eating"],
+  img: "img/electric-jar-opener.jpg",
+  desc: "Push-button automatic jar opener for tight or vacuum-sealed lids—ideal for independent cooking with weak hand strength."
+},
+
+
+        // —— TECH ——
+        {
+      name: "Sixth Digit 2",
+      cat: ["Tech"],
+      img: "img/sixth-digit-2.jpg",
+      desc: "A wearable stylus that fits on your last two fingers, letting you use touchscreens and press buttons on phones, tablets, and appliance controls."
+    },
+    {
+      name: "AirPods Max",
+      cat: ["Tech"],
+      img: "img/airpods-max.jpg",
+      desc: "Over-ear headphones designed for an uncompromising fit and acoustic seal—easy to put on without grip strength, for immersive sound without looking “disabled.”"
+    },
+    {
+      name: "MagSafe iPhone Ring",
+      cat: ["Tech"],
+      img: "img/magsafe-iphone-ring.jpg",
+      desc: "A magnetic ring that attaches to MagSafe phones—serves as a one-handed grip or desktop kickstand, reducing drops and improving reach."
+    },
+    {
+      name: "Trackball Mouse",
+      cat: ["Tech"],
+      img: "img/trackball-mouse.jpg",
+      desc: "Spin the precision ball to move cursor, scroll pages, or navigate documents with minimal hand movement and no dragging."
+    },
+    {
+      name: "QuadStick",
+      cat: ["Tech"],
+      img: "img/quadstick.jpg",
+      desc: "A hands-free gaming controller for consoles and PCs—available in multiple models to suit your budget and needs."
+    },
+    {
+      name: "Dragon Software",
+      cat: ["Tech"],
+      img: "img/dragon-software.jpg",
+      desc: "Voice-recognition dictation software for iOS/Android—create and edit documents using custom words, templates, and commands."
+    },
+    {
+  name: "Tecla",
+  cat: ["Tech"],
+  img: "img/tecla.jpg",
+  desc: "Hands-free access to smartphones, tablets, and computers using wheelchair joysticks, switches, or voice input."
+},
+{
+  name: "Alexa Smart Home",
+  cat: ["Tech"],
+  img: "img/alexa-smart-home.jpg",
+  desc: "Control your lights, thermostat, doors, and even appliances using only your voice through Amazon Alexa."
+},
+
+
+        // —— TOILETING ——
+        {
+      name: "WheelAble Folding Commode Chair",
+      cat: ["Toileting"],
+      img: "img/wheelable-commode-chair.jpg",
+      desc: "A one-hand foldable commode and shower chair that fits regular stalls and tight spaces—perfect for travel and easy transfers."
+    },
+    {
+      name: "PantHook",
+      cat: ["Toileting"],
+      img: "img/panthook.jpg",
+      desc: "Discreet adaptive aid that hooks your waistband out of the way for catheterizing—slides under the seat cushion and stows easily."
+    },
+    {
+      name: "Wireless Leg Bag Emptier",
+      cat: ["Toileting"],
+      img: "img/wireless-leg-bag-emptier.jpg",
+      desc: "Freedom Flow™ remote-controlled valve attaches to your leg bag tube—empties a full bag in under 30 seconds without installation."
+    },
+    {
+      name: "Bottom Buddy",
+      cat: ["Toileting"],
+      img: "img/bottom-buddy.jpg",
+      desc: "Toilet aid with three flexible heads that grip wipes or toilet paper—push a button to release, ensuring personal hygiene independence."
+    },
+    {
+      name: "Therafin Toileting Aids",
+      cat: ["Toileting"],
+      img: "img/therafin-toileting-aids.jpg",
+      desc: "Long-handle bowel and toileting tools with adjustable strap for reduced hand function—designed for easy reach and control."
+    },
+    {
+      name: "Peristeen",
+      cat: ["Toileting"],
+      img: "img/peristeen.jpg",
+      desc: "Rectal catheter irrigation system that flushes the lower colon—establish a routine to stay continent for up to 48 hours."
+    },
+    {
+      name: "Navina Irrigation System",
+      cat: ["Toileting"],
+      img: "img/navina-irrigation-system.jpg",
+      desc: "High-volume transanal irrigation system for regular bowel routines—reduces time on the toilet and risk of accidents."
+    },
+    {
+      name: "AquaFlush Transanal Irrigation",
+      cat: ["Toileting"],
+      img: "img/aquaflush.jpg",
+      desc: "Aquaflush® system to manage bowel care with confidence—establish an effective routine for independence and freedom."
+    },
+    {
+  name: "TOTO Washlet Bidet",
+  cat: ["Toileting"],
+  img: "img/toto-washlet.jpg",
+  desc: "Heated bidet seat with remote-controlled spray and dryer functions—restores toileting independence."
+},
+{
+  name: "Automatic Soap Dispenser",
+  cat: ["Toileting"],
+  img: "img/auto-soap-dispenser.jpg",
+  desc: "Touch-free soap dispensing with motion sensor—great for hygiene routines without grip."
+},
+
+
+        // —— WHEELCHAIR ACCESSORIES ——
+        {
+      name: "The Dynamic Bag by Handy Bag",
+      cat: ["Wheelchair Accessories"],
+      img: "img/dynamic-bag-handy-bag.jpg",
+      desc: "A magnetic-snap military-grade backpack that you can pull from back to front for zero-effort access and theft protection."
+    },
+    {
+      name: "NaviONE Wheels",
+      cat: ["Wheelchair Accessories"],
+      img: "img/navione-wheels.jpg",
+      desc: "Yamaha’s power-assist system for manual chairs—adds torque to reduce fatigue, fits most chairs and keeps a sleek, manual look."
+    },
+    {
+      name: "Gloves for Life",
+      cat: ["Wheelchair Accessories"],
+      img: "img/gloves-for-life.jpg",
+      desc: "Suede push-gloves with tacky palm inserts—improve grip, reduce strain, and make pushing and transfers easier."
+    },
+    {
+      name: "Rio Firefly",
+      cat: ["Wheelchair Accessories"],
+      img: "img/rio-firefly.jpg",
+      desc: "Off-road power assist that bolts onto manual chairs—designed for fun, durability, and zero-compromise all-terrain performance."
+    },
+    {
+      name: "SMOOV One",
+      cat: ["Wheelchair Accessories"],
+      img: "img/smoov-one.jpg",
+      desc: "Alber’s cutting-edge power-assist module—boosts your manual wheelchair with smooth, intuitive assist up to 6 mph."
+    },
+    {
+      name: "TWIST Essential Bag by FidLock",
+      cat: ["Wheelchair Accessories"],
+      img: "img/twist-essential-bag-fidlock.jpg",
+      desc: "Magnetic-twist bag that clips on/off your chair in one motion—perfect for carrying essentials without widening your chair."
+    },
+    {
+      name: "Quokka Bags",
+      cat: ["Wheelchair Accessories"],
+      img: "img/quokka-bags.jpg",
+      desc: "High-quality, lockable bags that snap onto your frame—compact, durable, and compatible with manual or power chairs."
+    },
+    {
+      name: "RibGrips",
+      cat: ["Wheelchair Accessories"],
+      img: "img/ribgrips.jpg",
+      desc: "Ergonomic handrim covers made by a quadriplegic veteran—soft, responsive ribs boost control and eliminate calluses."
+    },
+    {
+      name: "Freedom Trax",
+      cat: ["Wheelchair Accessories"],
+      img: "img/freedom-trax.jpg",
+      desc: "Portable motorized track system turns any wheelchair into an off-road vehicle—tackle sand, snow, gravel and mud."
+    },
+    {
+      name: "Permobil SmartDrive",
+      cat: ["Wheelchair Accessories"],
+      img: "img/permobil-smartdrive.jpg",
+      desc: "Push-assist device that speeds up to 5.5 mph—give it a nudge for slow roll or a few quick pushes to zip around."
+    },
+    {
+      name: "FOBO Wheely",
+      cat: ["Wheelchair Accessories"],
+      img: "img/fobo-wheely.jpg",
+      desc: "Bluetooth sensors that monitor your tire pressure & temperature 24×7—alerts sent to your phone or caretaker app."
+    },
+
+
+        // —— LEISURE ——
+        {
+      name: "Playing Card Holder",
+      cat: ["Leisure"],
+      img: "img/playing-card-holder.jpg",
+      desc: "A 15-inch slotted plastic holder that keeps cards at an easy-to-read angle—perfect for hands-free play."
+    },
+    {
+      name: "Page Turner",
+      cat: ["Leisure"],
+      img: "img/page-turner.jpg",
+      desc: "A mouth-operated stick that lets users turn pages, type, or navigate books and devices without hand use."
+    },
+    {
+      name: "Strong Arm 2 Fishing Aid",
+      cat: ["Leisure"],
+      img: "img/strong-arm-2.jpg",
+      desc: "A cuff-style rod holder that supports the fishing pole in your arm, allowing casting and reeling with no grip needed."
+    },
+    {
+      name: "Gardening Pack",
+      cat: ["Leisure"],
+      img: "img/gardening-pack.jpg",
+      desc: "Ergonomically designed tools with easy-grip handles for accessible planting, weeding, and garden maintenance."
+    },
+    {
+  name: "Xbox Adaptive Controller",
+  cat: ["Leisure"],
+  img: "img/xbox-adaptive-controller.jpg",
+  desc: "Large-button game controller designed for accessibility—customizable with switches and mounts for all ability levels."
+},
+{
+  name: "Card Shuffler & Dealer",
+  cat: ["Leisure"],
+  img: "img/card-shuffler.jpg",
+  desc: "Battery-powered card shuffler and dealer that makes gameplay easier for users with limited dexterity."
+},
+
+// --- HOME & ENVIRONMENT ACCESS ---
+{
+    "name": "Open Sesame Automatic Door Opener",
+    "cat": ["Home & Environment"],
+    "img": "img/open-sesame.jpg",
+    "desc": "Remote-controlled automatic door opener for homes or buildings, offering switch, voice, or smartphone activation."
+  },
+  {
+    "name": "SwitchBot Smart Curtain",
+    "cat": ["Home & Environment"],
+    "img": "img/switchbot-curtain.jpg",
+    "desc": "Motorized curtain puller controlled via smartphone or Alexa, making windows accessible without reach."
+  },
+  {
+    "name": "Invacare Adjustable Bed Base",
+    "cat": ["Home & Environment"],
+    "img": "img/invacare-bed.jpg",
+    "desc": "Powered adjustable base allowing users to reposition with a remote—ideal for pressure relief and comfort."
+  },
+  {
+    "name": "Ring Video Doorbell",
+    "cat": ["Home & Environment"],
+    "img": "img/ring-doorbell.jpg",
+    "desc": "Smart doorbell with two-way voice communication—answer from your phone or Alexa even if you can't reach the door."
+  },
+// --- TRANSPORTATION & DRIVING ---
+{
+    "name": "Sure Grip Hand Controls",
+    "cat": ["Transportation"],
+    "img": "img/sure-grip.jpg",
+    "desc": "Push-pull hand control for adaptive driving, enabling acceleration and braking without foot use."
+  },
+  {
+    "name": "Swivel Cushion",
+    "cat": ["Transportation"],
+    "img": "img/swivel-cushion.jpg",
+    "desc": "Rotating cushion placed on car seats to aid independent transfers between wheelchair and vehicle."
+  },
+  {
+    "name": "Wheelchair Ramp (Portable)",
+    "cat": ["Transportation"],
+    "img": "img/portable-ramp.jpg",
+    "desc": "Lightweight, foldable ramp for entering vehicles or buildings—ideal for temporary or travel use."
+  },
+
+
+
+  // --- COGNITIVE OR VISUAL SUPPORT ---
+  {
+    "name": "Color-Coded Medication Organizer",
+    "cat": ["Health"],
+    "img": "img/color-pillbox.jpg",
+    "desc": "Brightly color-coded pill box with tactile and visual markers—helps track meds and reduces confusion."
+  },
+
+
+
+    ];
+
+    function render() {
+      const term = document.getElementById("search").value.toLowerCase();
+      const checked = Array.from(document.querySelectorAll(".cats input:checked"))
+                           .map(cb => cb.value);
+      const html = items
+        .filter(item =>
+          item.name.toLowerCase().includes(term) &&
+          item.cat.some(c => checked.includes(c))
+        )
+        .map(item => `
+          <div class="card">
+            <img src="${item.img}" alt="${item.name}">
+            <div class="body">
+              <h3>${item.name}</h3>
+              <p>${item.desc}</p>
+            </div>
+          </div>
+        `).join("") || "<p>No matches found.</p>";
+
+      document.getElementById("cards").innerHTML = html;
+    }
+
+    document.getElementById("search").addEventListener("input", render);
+    document.querySelectorAll(".cats input").forEach(cb =>
+      cb.addEventListener("change", render)
+    );
+    render();
+  </script>
+
+</body>
+</html>
