@@ -49,10 +49,9 @@
     <div class="filters">
       <input id="search" type="search" placeholder="🔍 Search equipment…" />
     
-      <div class="has-dropdown filter-dropdown">
+      <div class="filter-dropdown">
         <button type="button" class="filter-toggle">Filter Categories ▾</button>
-        <ul class="dropdown cats">
-          <li><label><input type="checkbox" value="Cognitive Support" checked> Cognitive Support</label></li>
+        <ul class="filter-menu">
           <li><label><input type="checkbox" value="Fitness" checked> Fitness</label></li>
           <li><label><input type="checkbox" value="Health" checked> Health</label></li>
           <li><label><input type="checkbox" value="Home & Environment" checked> Home & Environment</label></li>
@@ -77,6 +76,9 @@
   </main>
 
   <script>
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // 1. Your data array
     const items = [
       // —— FITNESS ——
       { name:"Wheelchair Treadmill", cat:["Fitness"], img:"img/treadmill.jpg", desc:"The ultimate wheelchair fitness machine. Proven to burn calories, condition shoulders, and fine-tune your pushing technique." },
@@ -516,34 +518,68 @@
 
 
     ];
+  
 
-    function render() {
-      const term = document.getElementById("search").value.toLowerCase();
-      const checked = Array.from(document.querySelectorAll(".cats input:checked"))
-                           .map(cb => cb.value);
-      const html = items
-        .filter(item =>
-          item.name.toLowerCase().includes(term) &&
-          item.cat.some(c => checked.includes(c))
-        )
-        .map(item => `
-          <div class="card">
-            <img src="${item.img}" alt="${item.name}">
-            <div class="body">
-              <h3>${item.name}</h3>
-              <p>${item.desc}</p>
-            </div>
-          </div>
-        `).join("") || "<p>No matches found.</p>";
+    // 2. Cache DOM elements
+    const searchInput   = document.getElementById('search');
+    const cardsContainer= document.getElementById('cards');
+    const filterToggle  = document.querySelector('.filter-toggle');
+    const filterMenu    = document.querySelector('.filter-menu');
 
-      document.getElementById("cards").innerHTML = html;
+    // 3. Helper: get all checked categories
+    function getCheckedCats() {
+      return Array.from(
+        filterMenu.querySelectorAll('input[type="checkbox"]:checked')
+      ).map(cb => cb.value);
     }
 
-    document.getElementById("search").addEventListener("input", render);
-    document.querySelectorAll(".cats input").forEach(cb =>
-      cb.addEventListener("change", render)
-    );
+    // 4. Render function
+    function render() {
+      const term    = searchInput.value.trim().toLowerCase();
+      const checked = getCheckedCats();
+
+      const filtered = items.filter(item =>
+        // name matches search
+        item.name.toLowerCase().includes(term) &&
+        // at least one of its categories is checked
+        item.cat.some(c => checked.includes(c))
+      );
+
+      if (!filtered.length) {
+        cardsContainer.innerHTML = '<p>No matches found.</p>';
+        return;
+      }
+
+      cardsContainer.innerHTML = filtered.map(item => `
+        <div class="card">
+          <img src="${item.img}" alt="${item.name}">
+          <div class="body">
+            <h3>${item.name}</h3>
+            <p>${item.desc}</p>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // 5. Event listeners
+    searchInput.addEventListener('input', render);
+
+    filterMenu
+      .querySelectorAll('input[type="checkbox"]')
+      .forEach(cb => cb.addEventListener('change', render));
+
+    filterToggle.addEventListener('click', e => {
+      e.stopPropagation();
+      filterMenu.classList.toggle('open');
+    });
+
+    document.addEventListener('click', () => {
+      filterMenu.classList.remove('open');
+    });
+
+    // 6. Initial render
     render();
+  });
   </script>
 
 </body>
