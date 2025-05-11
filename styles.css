@@ -264,39 +264,34 @@
   display: block;
 }
 
-/* mobile toggle button (hidden on desktop) */
-.mobile-toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.5em;
-}
 
-/* —————— Mobile styles —————— */
+
+
+
+/* ---------------- Mobile styles ---------------- */
 @media (max-width: 768px) {
-  .mobile-toggle {
-    display: block;
-  }
-  .site-nav {
+  .mobile-toggle { display: block; }       /* show hamburger */
+  .site-nav {                               /* hide nav by default */
     display: none;
     flex-direction: column;
     width: 100%;
+    background: #fff;
+    border-top: 1px solid #ccc;
   }
   .site-nav.open {
-    display: flex;
+    display: flex;                          /* show when .open */
   }
   .site-nav li {
     border-top: 1px solid #eee;
   }
-  .has-dropdown .dropdown {
-    position: static;
-    border: none;
-    padding-left: 1em;
-  }
-  .has-dropdown:hover .dropdown {
+  .has-dropdown .dropdown {                /* nested menu hidden */
     display: none;
+    position: static;
+    padding-left: 1em;
+    border: none;
+    background: none;
   }
-  .has-dropdown.open > .dropdown {
+  .has-dropdown.open > .dropdown {         /* show on tap */
     display: block;
   }
 }
