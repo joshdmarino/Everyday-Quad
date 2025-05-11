@@ -520,67 +520,107 @@
     ];
   
 
-    // 2. Cache DOM elements
-    const searchInput   = document.getElementById('search');
-    const cardsContainer= document.getElementById('cards');
-    const filterToggle  = document.querySelector('.filter-toggle');
-    const filterMenu    = document.querySelector('.filter-menu');
+// 2. Cache DOM references
+const searchInput    = document.getElementById('search');
+  const cardsContainer = document.getElementById('cards');
+  const filterToggle   = document.querySelector('.filter-toggle');
+  const filterMenu     = document.querySelector('.filter-menu');
 
-    // 3. Helper: get all checked categories
-    function getCheckedCats() {
-      return Array.from(
-        filterMenu.querySelectorAll('input[type="checkbox"]:checked')
-      ).map(cb => cb.value);
-    }
+  // 3. Inject the Select/Deselect All button
+  const selectLi = document.createElement('li');
+  selectLi.className = 'select-all';
+  const selectBtn = document.createElement('button');
+  selectBtn.type = 'button';
+  selectBtn.className = 'select-all-btn';
+  selectLi.appendChild(selectBtn);
+  filterMenu.insertBefore(selectLi, filterMenu.firstChild);
 
-    // 4. Render function
-    function render() {
-      const term    = searchInput.value.trim().toLowerCase();
-      const checked = getCheckedCats();
+  // 4. Grab all checkboxes now, including any future changes
+  function getCheckboxes() {
+    return Array.from(
+      filterMenu.querySelectorAll('input[type="checkbox"]')
+    );
+  }
 
-      const filtered = items.filter(item =>
-        // name matches search
-        item.name.toLowerCase().includes(term) &&
-        // at least one of its categories is checked
-        item.cat.some(c => checked.includes(c))
-      );
+  // 5. Update the Select/Deselect All button text
+  function updateSelectBtnLabel() {
+    const anyChecked = getCheckboxes().some(cb => cb.checked);
+    selectBtn.textContent = anyChecked ? 'Deselect All' : 'Select All';
+  }
 
-      if (!filtered.length) {
-        cardsContainer.innerHTML = '<p>No matches found.</p>';
-        return;
-      }
+  // 6. Render the cards based on search + checked cats
+  function render() {
+    const term    = searchInput.value.trim().toLowerCase();
+    const checked = getCheckboxes()
+                      .filter(cb => cb.checked)
+                      .map(cb => cb.value);
 
-      cardsContainer.innerHTML = filtered.map(item => `
+    const filtered = items.filter(item =>
+      item.name.toLowerCase().includes(term) &&
+      item.cat.some(c => checked.includes(c))
+    );
+
+    if (!filtered.length) {
+      cardsContainer.innerHTML = '<p>No matches found.</p>';
+    } else {
+      cardsContainer.innerHTML = filtered.map(it => `
         <div class="card">
-          <img src="${item.img}" alt="${item.name}">
+          <img src="${it.img}" alt="${it.name}">
           <div class="body">
-            <h3>${item.name}</h3>
-            <p>${item.desc}</p>
+            <h3>${it.name}</h3>
+            <p>${it.desc}</p>
           </div>
         </div>
       `).join('');
     }
+  }
 
-    // 5. Event listeners
-    searchInput.addEventListener('input', render);
+  // 7. Wire up events
+  // Search input
+  searchInput.addEventListener('input', render);
 
-    filterMenu
-      .querySelectorAll('input[type="checkbox"]')
-      .forEach(cb => cb.addEventListener('change', render));
+  // Checkbox changes
+  filterMenu.querySelectorAll('input[type="checkbox"]').forEach(cb =>
+    cb.addEventListener('change', () => {
+      updateSelectBtnLabel();
+      render();
+    })
+  );
 
-    filterToggle.addEventListener('click', e => {
-      e.stopPropagation();
-      filterMenu.classList.toggle('open');
-    });
+  // Filter dropdown toggle
+  filterToggle.addEventListener('click', e => {
+    e.stopPropagation();
+    filterMenu.classList.toggle('open');
+  });
 
-    document.addEventListener('click', () => {
-      filterMenu.classList.remove('open');
-    });
-
-    // 6. Initial render
+  // Clicking “Select All” / “Deselect All”
+  selectBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    const cbs = getCheckboxes();
+    const any = cbs.some(cb => cb.checked);
+    cbs.forEach(cb => cb.checked = !any);
+    updateSelectBtnLabel();
     render();
   });
-  </script>
+
+  // Click outside closes dropdown
+  document.addEventListener('click', () => {
+    filterMenu.classList.remove('open');
+  });
+
+  // 8. Initial setup
+  updateSelectBtnLabel();
+  render();
+});
+</script>
+
+
+
+
+
+
+
+
 
 </body>
 </html>

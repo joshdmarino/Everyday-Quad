@@ -1,0 +1,307 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Everyday Quad – SCI Dictionary</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* dropdown styling */
+    .filter-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .filter-menu {
+      display: none;
+      position: absolute;
+      list-style: none;
+      margin: 0;
+      padding: 0.5em;
+      border: 1px solid #ccc;
+      background: #fff;
+      max-height: 200px;
+      overflow-y: auto;
+      z-index: 100;
+    }
+    .filter-menu.open {
+      display: block;
+    }
+    .filter-menu li {
+      margin: 0;
+      padding: 0.2em 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- fixed header -->
+  <header class="site-header">
+    <div class="nav-container">
+      <h1><a href="index.html">Everyday Quad</a></h1>
+      <ul class="site-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="equipment.html">Adaptive Equipment</a></li>
+        <li class="has-dropdown">
+          <a>Resources ▾</a>
+          <ul class="dropdown">
+            <li><a href="grants.html">Grants</a></li>
+            <li><a href="scholarships.html">Scholarships</a></li>
+            <li><a href="governmentAid.html">Government Aid</a></li>
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <a>Education ▾</a>
+          <ul class="dropdown">
+            <li><a href="about.html">About SCIs</a></li>
+            <li><a href="dictionary.html">SCI Dictionary</a></li>
+            <li><a href="tutorials.html">Tutorials</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <h1>SCI Dictionary</h1>
+
+    <!-- search + alphabetical filters -->
+    <div class="filters">
+      <input id="search" type="search" placeholder="🔍 Search entries…" />
+      <div class="filter-dropdown">
+        <button type="button" class="filter-toggle">Filter A–Z ▾</button>
+        <ul class="filter-menu">
+          <!-- letters A–Z -->
+          <li><label><input type="checkbox" value="A" checked> A</label></li>
+          <li><label><input type="checkbox" value="B" checked> B</label></li>
+          <li><label><input type="checkbox" value="C" checked> C</label></li>
+          <li><label><input type="checkbox" value="D" checked> D</label></li>
+          <li><label><input type="checkbox" value="E" checked> E</label></li>
+          <li><label><input type="checkbox" value="F" checked> F</label></li>
+          <li><label><input type="checkbox" value="G" checked> G</label></li>
+          <li><label><input type="checkbox" value="H" checked> H</label></li>
+          <li><label><input type="checkbox" value="I" checked> I</label></li>
+          <li><label><input type="checkbox" value="J" checked> J</label></li>
+          <li><label><input type="checkbox" value="K" checked> K</label></li>
+          <li><label><input type="checkbox" value="L" checked> L</label></li>
+          <li><label><input type="checkbox" value="M" checked> M</label></li>
+          <li><label><input type="checkbox" value="N" checked> N</label></li>
+          <li><label><input type="checkbox" value="O" checked> O</label></li>
+          <li><label><input type="checkbox" value="P" checked> P</label></li>
+          <li><label><input type="checkbox" value="Q" checked> Q</label></li>
+          <li><label><input type="checkbox" value="R" checked> R</label></li>
+          <li><label><input type="checkbox" value="S" checked> S</label></li>
+          <li><label><input type="checkbox" value="T" checked> T</label></li>
+          <li><label><input type="checkbox" value="U" checked> U</label></li>
+          <li><label><input type="checkbox" value="V" checked> V</label></li>
+          <li><label><input type="checkbox" value="W" checked> W</label></li>
+          <li><label><input type="checkbox" value="X" checked> X</label></li>
+          <li><label><input type="checkbox" value="Y" checked> Y</label></li>
+          <li><label><input type="checkbox" value="Z" checked> Z</label></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- glossary entries -->
+    <section id="Dictionary">
+      <div class="dictionary-list">
+        <div class="entry" id="bladder-complications">
+            <h2>Bladder Complications</h2>
+            <p>Individuals with SCI face unique urinary tract risks: altered sensations can mask symptoms, necessitating frequent colonoscopy screening and careful planning of bowel and bladder programs to detect complications early.</p>
+          </div>
+          
+          <div class="entry" id="caregiving">
+            <h2>Caregiving</h2>
+            <p>Spouses and family caregivers of SCI survivors often experience higher levels of depression, stress, and unmet needs; maintaining equality, clear communication, respite care, and self‐care are key to sustaining caregiver well‐being.</p>
+          </div>
+          
+          <div class="entry" id="cholesterol">
+            <h2>Cholesterol</h2>
+            <p>People with SCI are prone to lower HDL and higher LDL levels due to metabolic changes and reduced activity; regular lipid testing, diet modifications, weight management, exercise, and possibly medications help maintain healthy cholesterol profiles.</p>
+          </div>
+          
+          <div class="entry" id="colonoscopy">
+            <h2>Colonoscopy</h2>
+            <p>SCI survivors have diminished bowel sensation, making colorectal cancer harder to detect—early and more frequent colonoscopy screening, with careful prep and caregiver support, is critical for timely diagnosis.</p>
+          </div>
+          
+          <div class="entry" id="deep-vein-thrombosis">
+            <h2>Deep Vein Thrombosis (DVT)</h2>
+            <p>Reduced mobility post‐SCI raises DVT risk; prevention with anticoagulants, leg measurements, and mobility exercises is essential, and prompt treatment with blood thinners and possible IVC filters can avert life‐threatening pulmonary embolism.</p>
+          </div>
+          
+          <div class="entry" id="fatigue">
+            <h2>Fatigue</h2>
+            <p>Chronic fatigue affects over half of long‐term SCI survivors, linked to injury level, health status, and mood—self‐monitoring, activity adjustments, rest scheduling, exercise, and stress management can help mitigate exhaustion.</p>
+          </div>
+          
+          <div class="entry" id="fire-safety">
+            <h2>Fire Safety</h2>
+            <p>SCI survivors should develop personalized escape plans that include accessible exits, smoke alarms, assistive techniques for bed and wheelchair egress, and clear communication with local fire departments to ensure safe evacuation.</p>
+          </div>
+          
+          <div class="entry" id="foam-padding">
+            <h2>Foam Padding</h2>
+            <p>Custom‐cut soft foam pads protect bony prominences in bed—replace monthly or when support wanes—and discontinue use if redness persists, while always coordinating with wound care specialists.</p>
+          </div>
+          
+          <div class="entry" id="hand-hygiene">
+            <h2>Hand Hygiene</h2>
+            <p>Proper handwashing with soap and water or alcohol‐based gels before and after care routines is crucial to prevent infection spread among SCI patients and their caregivers.</p>
+          </div>
+          
+          <div class="entry" id="help-hope-live">
+            <h2>Help Hope Live</h2>
+            <p>This nonprofit guides families in medical fundraising campaigns to cover out‐of‐pocket costs for treatments, equipment, and living expenses, mobilizing community support for those facing high healthcare bills.</p>
+          </div>
+          
+          <div class="entry" id="heterotopic-ossification">
+            <h2>Heterotopic Ossification (HO)</h2>
+            <p>HO is abnormal bone growth in soft tissues after SCI, presenting with joint stiffness, warmth, and fever; management includes gentle range‐of‐motion, NSAIDs or Warfarin for prophylaxis, and surgery or radiation for severe cases.</p>
+          </div>
+          
+          <div class="entry" id="hospital-acquired-pneumonia">
+            <h2>Hospital Acquired Pneumonia (HAP)</h2>
+            <p>Invasive airway devices and reduced cough strength increase HAP risk in SCI patients; prevention via strict hand hygiene, head‐of‐bed elevation, closed suction techniques, and frequent oral care coupled with prompt antibiotic therapy is vital.</p>
+          </div>
+          
+          <div class="entry" id="male-fertility">
+            <h2>Male Fertility After SCI</h2>
+            <p>SCI typically impairs psychogenic erections and ejaculation but preserves reflex erections in T10 or above injuries; options for semen retrieval include PVS, electro‐ejaculation, and surgical sperm aspiration to support fertility treatments.</p>
+          </div>
+          
+          <div class="entry" id="mitrofanoff-procedure">
+            <h2>Mitrofanoff Procedure</h2>
+            <p>Creating a continent catheterizable channel using the appendix or bowel provides an alternative route for intermittent catheterization when urethral access is difficult—requires diligent self‐catheterization and periodic follow‐up.</p>
+          </div>
+          
+          <div class="entry" id="osteoporosis">
+            <h2>Osteoporosis</h2>
+            <p>Rapid bone density loss post‐SCI peaks within two years due to immobilization and autonomic changes; DXA scans guide diagnosis, and interventions include weight‐bearing exercise, calcium/Vitamin D, and bisphosphonates to preserve skeletal health.</p>
+          </div>
+          
+          <div class="entry" id="personal-care-assistants">
+            <h2>Personal Care Assistants</h2>
+            <p>Effective PCA hiring starts with organizing and consolidating tasks, creating clear contracts, exploring funding options, and maintaining positive employer‐employee relationships to ensure consistent, high‐quality care.</p>
+          </div>
+          
+          <div class="entry" id="posttraumatic-tethered-cord">
+            <h2>Post‐Traumatic Tethered Spinal Cord &amp; Syringomyelia</h2>
+            <p>Scar tissue after SCI can tether the cord or form syrinxes, leading to sensory/motor decline, pain, and autonomic dysreflexia; neurosurgical untethering and shunting restore CSF flow and prevent further neurologic deterioration.</p>
+          </div>
+          
+          <div class="entry" id="neuropathic-pain">
+            <h2>Posttraumatic Neuropathic Pain</h2>
+            <p>Central pain below the injury level manifests as burning, stabbing, or electric sensations; when medications fail, neurosurgical options like dorsal root entry zone lesioning can reduce aberrant spinal cord activity.</p>
+          </div>
+          
+          <div class="entry" id="posture">
+            <h2>Posture</h2>
+            <p>Muscle imbalances, weak trunk control, and gravity lead to slouching or lateral lean in SCI—proper cushions, supports, corsets, and therapeutic exercise promote neutral spine alignment, reduce pain, and improve respiratory function.</p>
+          </div>
+          
+          <div class="entry" id="pressure-sores">
+            <h2>Pressure Sores</h2>
+            <p>SCI patients are at high risk for pressure ulcers; prevention and early management through routine skin checks, pressure relief, proper nutrition, and pressure‐reducing surfaces are essential to avoid serious complications.</p>
+          </div>
+          
+          <div class="entry" id="purple-urine-bag">
+            <h2>Purple Urine Bag Syndrome (PUBS)</h2>
+            <p>PUBS occurs when certain gut bacteria metabolize tryptophan to produce indigo and indirubin dyes, turning urinary catheters or bags purple—management focuses on UTI prevention, hydration, and routine catheter changes.</p>
+          </div>
+          
+          <div class="entry" id="respiratory-system">
+            <h2>Respiratory System</h2>
+            <p>SCI impairs diaphragmatic and intercostal muscles, reducing vital capacity and cough efficacy; ongoing respiratory muscle training, assisted coughing techniques, and infection prevention strategies are critical.</p>
+          </div>
+          
+          <div class="entry" id="male-sexual-function">
+            <h2>Sexual Function in Men After SCI</h2>
+            <p>SCI alters erectile physiology: reflexogenic erections via S2–4 often remain intact, while psychogenic erections require T11–L2 pathways; treatments include constriction bands, VEDs, injections, and implants to restore sexual function.</p>
+          </div>
+          
+          <div class="entry" id="female-sexual-function">
+            <h2>Sexual Function in Women After SCI</h2>
+            <p>Women with SCI maintain sexual desire and orgasmic potential; lubrication may require water‐based emollients, and addressing autonomic dysreflexia, catheter/bowel management, and contraception supports safe, satisfying intimacy.</p>
+          </div>
+          
+          <div class="entry" id="smoking-risks">
+            <h2>Smoking: Lungs, Skin and Bladder</h2>
+            <p>Cigarette smoke compounds SCI‐related respiratory compromise, impairs cough, delays wound healing, elevates pressure ulcer and bladder cancer risk—cessation and avoidance of secondhand smoke markedly improve health outcomes.</p>
+          </div>
+          
+          <div class="entry" id="spasticity">
+            <h2>Spasticity</h2>
+            <p>Spontaneous muscle hyperactivity after SCI can hinder function; conservative treatments include oral medications and Botox, while refractory cases may warrant intrathecal baclofen pumps or selective dorsal rhizotomy.</p>
+          </div>
+          
+          <div class="entry" id="spirituality">
+            <h2>Spirituality</h2>
+            <p>Exploring meaning through spirituality—via meditation, prayer, volunteerism, or community—bolsters emotional resilience, may lower morbidity, and enhances quality of life in long‐term SCI adjustment.</p>
+          </div>
+          
+          <div class="entry" id="sun-safety">
+            <h2>Sun Safety</h2>
+            <p>SCI survivors face altered thermoregulation and skin integrity; strategies include regular use of high‐SPF sunscreen, protective clothing, hydration, and vigilance for skin redness to prevent burns and breakdown.</p>
+          </div>
+          
+          <div class="entry" id="suprapubic-catheter">
+            <h2>Suprapubic Catheter</h2>
+            <p>Creating a bladder drainage route through the abdomen preserves urethral integrity and simplifies catheter care; proper stoma hygiene and securement prevent infection and skin complications.</p>
+          </div>
+          
+          <div class="entry" id="upper-extremity-pain">
+            <h2>Upper Extremity Pain</h2>
+            <p>Repetitive transfers and wheelchair propulsion stress shoulders, wrists, and elbows—early diagnosis of rotator cuff tears, biceps tendonitis, and carpal tunnel syndrome, plus ergonomic training and rest, prevent chronic injury.</p>
+          </div>
+          
+          <div class="entry" id="urinary-tract-system">
+            <h2>Urinary Tract System</h2>
+            <p>UTI prevention in SCI requires adequate hydration, proper catheter change intervals, sterile techniques, and prompt evaluation of fever or autonomic dysreflexia symptoms to guide treatment.</p>
+          </div>
+          
+          <div class="entry" id="vre">
+            <h2>Vancomycin Resistant Enterococcus (VRE)</h2>
+            <p>VRE colonizes the GI and GU tracts of hospitalized SCI patients; strict hand hygiene, contact precautions, and judicious antibiotic use are vital to prevent spread and manage infections.</p>
+          </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const entries     = Array.from(document.querySelectorAll('.entry'));
+      const searchInput = document.getElementById('search');
+      const checkboxes  = Array.from(document.querySelectorAll('.filter-menu input[type="checkbox"]'));
+
+      function render() {
+        const term    = searchInput.value.trim().toLowerCase();
+        const letters = checkboxes.filter(cb => cb.checked).map(cb => cb.value);
+        entries.forEach(e => {
+          const title = e.querySelector('h2').textContent.toLowerCase();
+          const first = title.charAt(0).toUpperCase();
+          const visible = title.includes(term) && letters.includes(first);
+          e.style.display = visible ? '' : 'none';
+        });
+      }
+
+      // wire up search + checkboxes
+      searchInput.addEventListener('input', render);
+      checkboxes.forEach(cb => cb.addEventListener('change', render));
+      render();
+
+      // dropdown toggle
+      const dropdown = document.querySelector('.filter-dropdown');
+      const btn      = dropdown.querySelector('.filter-toggle');
+      const menu     = dropdown.querySelector('.filter-menu');
+
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        menu.classList.toggle('open');
+      });
+      document.addEventListener('click', () => {
+        menu.classList.remove('open');
+      });
+    });
+  </script>
+</body>
+</html>
